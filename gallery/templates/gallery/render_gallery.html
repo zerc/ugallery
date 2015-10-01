@@ -1,0 +1,19 @@
+<div class="row">
+  <h1>Galleries owned by {{ user }}</h1>
+
+  {% if galleries %}
+    {% for item in galleries %}
+      {% include 'gallery/gallery_item.html' with gallery=item %}
+    {% endfor %}
+  {% endif %}
+
+  {% if galleries and galleries_multiupload %}
+    <hr>
+  {% endif %}
+
+  {% if galleries_multiupload %}
+    {% for item in galleries_multiupload %}
+      {% include 'gallery/multiupload_gallery_item.html' with gallery=item %}
+    {% endfor %}
+  {% endif %}
+</div>
