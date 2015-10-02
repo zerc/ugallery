@@ -7,6 +7,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from pyuploadcare.dj import FileField, ImageField, ImageGroupField
+from gallery.validators import extension_validator, size_validator
 
 
 class AbstractGallery(models.Model):
@@ -52,7 +53,7 @@ class Gallery(AbstractGallery):
 class GalleryMultiupload(AbstractGallery):
     """ Gallery with multiupload.
     """
-    photos = ImageGroupField()
+    photos = ImageGroupField(validators=[extension_validator, size_validator])
 
     def __str__(self):
         return self.title
@@ -75,7 +76,7 @@ class Photo(models.Model):
     """
     gallery = models.ForeignKey(Gallery)
     title = models.CharField(max_length=255)
-    image = ImageField()
+    image = ImageField(validators=[size_validator, extension_validator])
 
     def __str__(self):
         return self.title
