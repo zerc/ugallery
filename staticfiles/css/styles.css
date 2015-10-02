@@ -1,3 +1,6 @@
+a.navbar-brand {
+    margin-left: 70px !important;
+}
 .navbar-text {
     padding-left: 15px;
 }
