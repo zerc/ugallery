@@ -1,0 +1,23 @@
+<ul class="media-list">
+  {% for object in object_list %}
+    <li class="media">
+      <div class="media-left">
+        <a href="{{ object.get_absolute_url }}">
+          <img class="media-object" src="{{ object.cover.cdn_url }}-/scale_crop/64x64/center/" />
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <a href="{{ object.get_absolute_url }}">
+            {{ object }}
+          </a>
+        </h4>
+          <p>{{ object.short_description|truncatechars:100 }}</p>
+      </div>
+    </li>
+  {% empty %}
+    <li class="media">
+      <div class="media-body">Empty</div>
+    </li>
+  {% endfor %}
+</ul>

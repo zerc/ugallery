@@ -7,21 +7,13 @@
 {% endblock %}
 
 {% block body %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <h3>Create new gallery:</h3><br>
-        <form action="" method="POST">{% csrf_token %}
-          {% bootstrap_form form show_label=False %}
-          {% buttons %}
-            <button type="submit" class="btn btn-primary">
-              {% bootstrap_icon "star" %} Create new gallery
-            </button>
-          {% endbuttons %}
-        </form>
-      </div>
-      <div class="col-md-2"></div>
-    </div>
-  </div>
+  <h3>{{ form_title }}</h3><br>
+  <form action="" method="POST">{% csrf_token %}
+    {% bootstrap_form form show_label=False %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        {% bootstrap_icon button_icon %} {{ button_title }}
+      </button>
+    {% endbuttons %}
+  </form>
 {% endblock %}
