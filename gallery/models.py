@@ -53,7 +53,7 @@ class Gallery(AbstractGallery):
 class GalleryMultiupload(AbstractGallery):
     """ Gallery with multiupload.
     """
-    photos = ImageGroupField(validators=[extension_validator, size_validator])
+    photos = ImageGroupField()
 
     def __str__(self):
         return self.title
