@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'social_auth',
+    'bootstrap3',
 
     'gallery',
 )

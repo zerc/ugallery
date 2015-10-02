@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <h3>{{ object }}</h3>
+
+        {% buttons %}
+          <a href="{% url 'gallery:photo_add' object.pk %}" class="btn btn-primary">
+            {% bootstrap_icon "star" %} Add photo
+          </a>
+        {% endbuttons %}
+
+        <div class="fotorama" data-allowfullscreen="true" data-nav="thumbs">
+            {% for photo in object.photo_set.all %}
+                <a href="{{ photo.image.cdn_url }}-/stretch/fill/-/setfill/eee/-/resize/1200x700/">
+                  <img src="{{ photo.image.cdn_url }}-/scale_crop/64x64/center/" data-full="{{ photo.image.cdn_url }}" style="height:64px;width:100%;" />
+                </a>
+            {% endfor %}
+        </div>
+
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+{% endblock %}

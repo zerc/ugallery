@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <h3>My galleries</h3>
+
+        {% if object_list %}
+          <ul class="list-group">
+            {% for object in object_list %}
+              <li class="list-group-item" style="line-height:33px;">
+                <a href="{{ object.get_absolute_url }}">{{ object }}</a>
+
+                {% for photo in object.photo_set.all %}
+                  <img class="pull-right" src="{{ photo.image.cdn_url }}-/scale_crop/32x32/center/" data-full="{{ photo.image.cdn_url }}" style="margin-left:5px;" />
+                {% endfor %}
+                <br style="clear:both;">
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if m_galleries %}
+          <h3>My galleries with multiupload</h3>
+          <ul class="list-group">
+            {% for object in m_galleries %}
+              <li class="list-group-item" style="line-height:33px;">
+                <a href="{{ object.get_absolute_url }}">{{ object }}</a>
+
+                {% for photo in object.photos %}
+                  <img class="pull-right" src="{{ photo.cdn_url }}-/scale_crop/32x32/center/" data-full="{{ photo.cdn_url }}" style="margin-left:5px;" />
+                {% endfor %}
+                <br style="clear:both;">
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+{% endblock %}

@@ -12,4 +12,6 @@ urlpatterns = [
         name='logout'),
 
     url(r'', include('social_auth.urls')),
+    url(r'^gallery/', include('gallery.urls', app_name='gallery',
+        namespace='gallery')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

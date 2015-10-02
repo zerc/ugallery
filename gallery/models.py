@@ -1,6 +1,7 @@
 # coding: utf-8
 from django.db import models
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -24,6 +25,9 @@ class Gallery(AbstractGallery):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('gallery:detail', args=(self.pk,))
+
 
 @python_2_unicode_compatible
 class GalleryMultiupload(AbstractGallery):
@@ -33,6 +37,9 @@ class GalleryMultiupload(AbstractGallery):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('gallery:m_detail', args=(self.pk,))
 
 
 @python_2_unicode_compatible

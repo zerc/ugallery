@@ -1,12 +1,6 @@
 {% extends "base.html" %}
-{% load gallery_tags %}
 
-{% block user_block %}
-  {% render_galleries request.user %}
-{% endblock %}
-
-
-{% block common_block %}
+{% block body %}
   <div class="jumbotron">
     <h1>uGallery</h1>
     <p>Example of integration <a href="#">uploadcare</a> and <a href="#">django</a></p>
