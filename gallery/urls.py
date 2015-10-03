@@ -13,11 +13,11 @@ urlpatterns = (
         login_required(views.GalleryMultiuploadCreateView.as_view()),
         name='multi_add'),
 
-    url(r'^list/$', login_required(views.GalleryListView.as_view()),
+    url(r'^list/$', views.GalleryListView.as_view(),
         name='list'),
 
     url(r'^(?P<pk>\d+)/$',
-        login_required(views.GalleryDetailView.as_view()),
+        views.GalleryDetailView.as_view(),
         name='detail'),
 
     url(r'^(?P<pk>\d+)/update$',
@@ -25,7 +25,7 @@ urlpatterns = (
         name='update'),
 
     url(r'^m/(?P<pk>\d+)/$',
-        login_required(views.GalleryMultiuploadDetailView.as_view()),
+        views.GalleryMultiuploadDetailView.as_view(),
         name='m_detail'),
 
     url(r'^m/(?P<pk>\d+)/update$',

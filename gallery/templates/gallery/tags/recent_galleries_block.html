@@ -1,0 +1,14 @@
+<div class="panel panel-info recent_galleries_block">
+  <div class="panel-heading">Latest galleries</div>
+  <div class="row">
+    {% for galleries in galleries_chunks %}
+      <div class="col-md-6">
+        {% include 'gallery/includes/gallery_list_common.html' with object_list=galleries %}
+      </div>
+    {% empty %}
+      <div class="col-md-12">Empty :(</div>
+    {% endfor %}
+  </div>
+
+</div>
+

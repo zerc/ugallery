@@ -1,8 +1,11 @@
 {% extends "base.html" %}
+{% load gallery_tags %}
 
 {% block body %}
   <div class="jumbotron">
     <h1>uGallery</h1>
     <p>Is a simple gallery example based on <a href="https://uploadcare.com/" target="_blank">Uploadcare</a> (these good comrades will take care of all of your precious files), <a href="https://www.djangoproject.com/" target="_blank">Django</a>, <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> and <a href="http://fotorama.io" target="_blank">Fotorama</a>.<p>
   </div>
+
+  {% render_recent_galleries_block %}
 {% endblock %}

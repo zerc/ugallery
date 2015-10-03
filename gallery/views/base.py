@@ -45,6 +45,10 @@ class AbstractUpdateView(GalleryFormMixin, UpdateView):
     form_title = 'Update a gallery'
     button_title = 'Update!'
 
+    def get_queryset(self, *args, **kwargs):
+        qs = super(AbstractUpdateView, self).get_queryset(*args, **kwargs)
+        return qs.filter(user=self.request.user)
+
 
 class AbstractDetailView(DetailView):
     """ Abstract DetailView for single gallery item.
@@ -53,16 +57,13 @@ class AbstractDetailView(DetailView):
     show_add = True
     update_url = 'gallery:update'
 
-    def get_queryset(self, *args, **kwargs):
-        qs = super(AbstractDetailView, self).get_queryset(*args, **kwargs)
-        return qs.filter(user=self.request.user)
-
     def get_context_data(self, *args, **kwargs):
         context = super(AbstractDetailView, self).get_context_data(*args,
                                                                    **kwargs)
         context.update(dict(
             show_add=self.show_add,
-            update_url=self.update_url
+            update_url=self.update_url,
+            is_owner=self.request.user == self.object.user
         ))
 
         return context

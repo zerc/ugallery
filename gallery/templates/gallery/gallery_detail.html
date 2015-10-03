@@ -8,22 +8,24 @@
     <p>{{ object.short_description }}</p>
   {% endif %}
 
-  {% buttons %}
-    <a href="{% url update_url object.pk %}" class="btn btn-default">
-      {% bootstrap_icon "pencil" %} Edit gallery
-    </a>
-
-    {% if show_add %}
-      <a href="{% url 'gallery:photo_add' object.pk %}" class="btn btn-primary">
-        {% bootstrap_icon "star" %} Add photo
+  {% if is_owner %}
+    {% buttons %}
+      <a href="{% url update_url object.pk %}" class="btn btn-default">
+        {% bootstrap_icon "pencil" %} Edit gallery
       </a>
-    {% endif %}
-  {% endbuttons %}
+
+      {% if show_add %}
+        <a href="{% url 'gallery:photo_add' object.pk %}" class="btn btn-primary">
+          {% bootstrap_icon "star" %} Add photo
+        </a>
+      {% endif %}
+    {% endbuttons %}
+  {% endif %}
 
   <div class="fotorama" data-allowfullscreen="true" data-nav="thumbs">
     {% for photo in object.photo_items %}
-        <a href="{{ photo.url }}-/stretch/fill/-/setfill/eee/-/resize/1200x700/">
-          <img src="{{ photo.url }}-/scale_crop/64x64/center/" data-full="{{ photo.url }}" style="height:64px;width:100%;" />
+        <a href="{{ photo.url }}-/preview/750x438/-/stretch/fill/-/setfill/eee/-/resize/750x438/" data-full="{{ photo.url }}">
+          <img src="{{ photo.url }}-/scale_crop/64x64/center/" style="height:64px;width:100%;" />
         </a>
     {% endfor %}
   </div>

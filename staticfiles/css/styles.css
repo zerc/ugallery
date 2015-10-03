@@ -1,3 +1,14 @@
+div.recent_galleries_block .row {
+    padding: 10px 10px 0 10px;
+}
+div.recent_galleries_block .media {
+    height: 64px;
+    overflow: hidden;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
 a.navbar-brand {
     margin-left: 70px !important;
 }
