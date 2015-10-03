@@ -16,8 +16,3 @@ class GalleryAdmin(admin.ModelAdmin):
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
     pass
-
-
-@admin.register(models.GalleryMultiupload)
-class GalleryMultiuploadAdmin(admin.ModelAdmin):
-    pass

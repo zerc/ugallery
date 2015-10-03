@@ -1,3 +1,24 @@
+.photo_remove_link {
+    position: relative;
+    display: inline-block;
+}
+.photo_remove_link:hover .photo_remove_overflow {
+    display: block;
+}
+.photo_remove_overflow {
+    display: none;
+    top:0;
+    left:0;
+    width:64px;
+    height:64px;
+    background-color:#fff;
+    position:absolute;
+    opacity:0.8;
+    color:#000;
+    text-align:center;
+    line-height:64px;
+    font-size:26px;
+}
 div.recent_galleries_block .row {
     padding: 10px 10px 0 10px;
 }

@@ -3,7 +3,7 @@ from django import template
 from django.conf import settings
 from funcy import ichunks
 
-from gallery.models import Gallery, GalleryMultiupload
+from gallery.models import Gallery
 
 register = template.Library()
 

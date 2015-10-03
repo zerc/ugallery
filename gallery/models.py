@@ -50,27 +50,6 @@ class Gallery(AbstractGallery):
 
 
 @python_2_unicode_compatible
-class GalleryMultiupload(AbstractGallery):
-    """ Gallery with multiupload.
-    """
-    photos = ImageGroupField()
-
-    def __str__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse('gallery:m_detail', args=(self.pk,))
-
-    @cached_property
-    def cover(self):
-        return self.photos[0]
-
-    @cached_property
-    def photo_items(self):
-        return [{'url': p.cdn_url, 'title': None} for p in self.photos]
-
-
-@python_2_unicode_compatible
 class Photo(models.Model):
     """ Simple photo item
     """

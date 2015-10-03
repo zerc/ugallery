@@ -3,10 +3,4 @@
 {% block body %}
   <h3>My galleries</h3>
   {% include 'gallery/includes/gallery_list_common.html' with object_list=object_list %}
-
-  <br><br>
-
-  <h3>My galleries with multiupload</h3>
-  {% include 'gallery/includes/gallery_list_common.html' with object_list=m_galleries %}
-
 {% endblock %}

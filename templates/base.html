@@ -17,6 +17,10 @@
       <meta property="og:site_name" content="uGallery" />
     {% endblock %}
 
+    <script type="text/javascript">
+      window.csrftoken = '{{ csrf_token }}';
+    </script>
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -42,7 +46,6 @@
             <ul class="nav navbar-nav">
               <li><a href="{% url 'gallery:list' %}">My Galleries</a></li>
               <li><a href="{% url 'gallery:add' %}">Add Gallery</a></li>
-              <li><a href="{% url 'gallery:multi_add' %}" title="Gallery with multiuploading">Add mGallery </a></li>
             </ul>
           {% endif %}
 
@@ -83,6 +86,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+      <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
     {% endblock %}
   </body>
 </html>

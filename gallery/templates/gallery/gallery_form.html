@@ -16,4 +16,21 @@
       </button>
     {% endbuttons %}
   </form>
+
+  {% if form.instance.pk %}
+    <hr>
+    <h4>Photos</h4>
+    {% for p in form.instance.photo_set.all %}
+      <a href="{% url 'gallery:photo-delete' p.pk %}" class="photo_remove_link js-remove-photo" title="Delete photo from gallery">
+        <div class="photo_remove_overflow">
+          <span class="glyphicon glyphicon-remove"></span>
+        </div>
+        <img src="{{ p.image.cdn_url }}-/scale_crop/64x64/center/" />
+      </a>
+    {% empty %}
+      No photos yet.
+    {% endfor %}
+  {% endif %}
+
+
 {% endblock %}

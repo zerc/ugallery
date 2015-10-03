@@ -2,11 +2,13 @@
 from django import forms
 from django.views.generic import CreateView, DetailView, UpdateView
 
+from gallery import forms as g_forms
+
 
 class GalleryFormMixin(object):
     """ Mixin for forms of `gallery` module.
     """
-    fields = ('title', 'short_description', 'user')
+    form_class = g_forms.GalleryForm
     template_name = 'gallery/gallery_form.html'
 
     form_title = 'Create a new gallery'
@@ -54,14 +56,12 @@ class AbstractDetailView(DetailView):
     """ Abstract DetailView for single gallery item.
     """
     template_name = 'gallery/gallery_detail.html'
-    show_add = True
     update_url = 'gallery:update'
 
     def get_context_data(self, *args, **kwargs):
         context = super(AbstractDetailView, self).get_context_data(*args,
                                                                    **kwargs)
         context.update(dict(
-            show_add=self.show_add,
             update_url=self.update_url,
             is_owner=self.request.user == self.object.user
         ))
